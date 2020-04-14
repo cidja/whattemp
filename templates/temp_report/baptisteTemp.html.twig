@@ -5,11 +5,21 @@
     <h1>température de Baptiste</h1>
     <div class="content">
         <img src="http://placehold.it/350x150" alt="">
-        <div class="comment">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius expedita ut quibusdam quaerat ducimus adipisci optio impedit? Nesciunt, 
-            quasi! Perferendis doloribus doloremque distinctio, totam laudantium laboriosam nulla accusantium veritatis. Magni adipisci, quo earum 
-            error deserunt dolore aperiam non voluptas consectetur illo, tempora esse nobis cupiditate dolorem voluptatibus facere voluptates asperiores.</p>
-        </div>
+        
+            {% for data in result %}
+            <div class="comment">
+            le{{data.createdAt | date("d/m/Y")}} à {{data.createdAt | date("H:i")}}, 
+            {% if data.temperature >= 40 %}
+                <span style="color:red">{{data.temperature}}°C</span>
+            {% elseif data.temperature <= 35.5 %}
+                <span style="color: blue">{{data.temperature}}°C</span>
+            {% else %} 
+                <span>{{data.temperature}}°C</span>  
+            {% endif %}
+            de température.
+            </div>
+            {% endfor %}
+           
     </div>
 </section>
 

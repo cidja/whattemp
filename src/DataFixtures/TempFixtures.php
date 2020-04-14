@@ -15,7 +15,7 @@ class TempFixtures extends Fixture
             //température du corps habituel 36,1 °C et 37,8 °C source: https://fr.wikipedia.org/wiki/Temp%C3%A9rature_corporelle_humaine
             // - de 35 hypodermie
             // >41.6 hyperthermie
-            $tempMin = 34;
+            $tempMin = 35;
             $tempMax = 42.7; //source: https://sante.journaldesfemmes.fr/maux-quotidien/1025528-20-chiffres-records-en-sante/1025530-record-de-fievre-la-plus-elevee
             $nbApresVirgule = 1;
            

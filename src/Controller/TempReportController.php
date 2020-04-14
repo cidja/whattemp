@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Temp;
+use App\Repository\TempRepository;
 
 class TempReportController extends AbstractController
 {
@@ -32,20 +34,38 @@ class TempReportController extends AbstractController
      */
     public function baptiste()
     {
-        return $this->render("temp_report/baptisteTemp.html.twig");
+        $repo = $this->getDoctrine()->getRepository(Temp::class);
+
+        $result = $repo->findby(
+            ["person" => "Baptiste"]
+        );
+
+        return $this->render("temp_report/baptisteTemp.html.twig", [
+            "result"    => $result
+        ]);
     }
     /**
      * @Route("/camille", name="camille")
      */
-    public function camille()
+    public function camille(TempRepository $repo)  // on passe un repository directement dans la variable $repo
     {
-        return $this->render("temp_report/camilleTemp.html.twig");
+        $result =  $repo->findBy(
+            ["person"   => "Camille"]
+        );
+        return $this->render("temp_report/camilleTemp.html.twig",
+            ["result"   => $result
+            ]);
     }
     /**
      * @Route("/christian", name="christian")
      */
-    public function christian()
+    public function christian(TempRepository $repo) // on passe un repository directement dans la variable $repo
     {
-        return $this->render("temp_report/christianTemp.html.twig");
+        $result = $repo->findBy(
+            ["person"   => "Christian"]
+        );
+        return $this->render("temp_report/christianTemp.html.twig",[
+            "result"    => $result
+        ]);
     }
 }
